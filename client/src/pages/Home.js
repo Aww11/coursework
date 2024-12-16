@@ -6,6 +6,7 @@ import { logout, setOnlineUser, setSocketConnection, setUser } from '../redux/us
 import Sidebar from '../components/Sidebar'
 import logo from '../assets/logo.jpg'
 import io from 'socket.io-client'
+import backgroundImage from '../assets/wallpaper.jpg';
 
 const Home = () => {
   const user = useSelector(state => state.user)
@@ -71,16 +72,15 @@ const Home = () => {
             <Outlet/>
         </section>
 
-
-        <div className={`justify-center items-center flex-col gap-2 hidden ${!basePath ? "hidden" : "lg:flex" }`}>
-            <div>
+        <div style={{ backgroundImage: `url(${backgroundImage})` }} className={`bg-no-repeat bg-cover justify-center items-center flex-col gap-2 hidden ${!basePath ? "hidden" : "lg:flex" }`}>
+            <div className='bg-white rounded-2xl p-6 place-items-center'>
               <img className='rounded-2xl'
                 src={logo}
                 width={150}
                 alt='logo'
               />
+              <p className='text-lg font-semibold mt-2 text-secondary'>Select kitty to send a message ^^ !!</p>
             </div>
-            <p className='text-lg font-semibold mt-2 text-secondary'>Select kitty to send message ^^ !!</p>
         </div>
     </div>
   )
